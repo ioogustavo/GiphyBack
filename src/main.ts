@@ -13,6 +13,10 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
+
+  app.enableCors({
+    origin: 'http://localhost:5173', // o '*' si querés permitir todos
+  });
   const port = process.env.PORT;
   await app.listen(port);
   console.log(`🚀 App running on: http://localhost:${port}/`);
